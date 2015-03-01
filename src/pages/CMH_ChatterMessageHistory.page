@@ -1,0 +1,38 @@
+<apex:page controller="CMH_ChatterMessageHistoryController" showHeader="false" applyBodyTag="false" standardStylesheets="false" action="{!doInit}" id="page">
+    <apex:include pageName="CMH_ChatterMessageHistoryCss" />
+    <div id="vf-page">
+        <apex:form id="form">
+            <apex:outputPanel rendered="{!errorMessage = ''}">
+                <apex:actionStatus startText="{!$Label.CMH_DeletingStatus}" stopText="" id="deletingStatus" />
+                <table cellspacing="0" cellpadding="0" class="histryTable">
+                    <apex:repeat value="{!wrapperList}" var="item">
+                        <tr>
+                            <td class="deleteLinkCol">
+                                <apex:commandLink value="{!$Label.CMH_Delete}" action="{!doDelete}" reRender="form" status="deletingStatus">
+                                    <apex:param name="delId" value="{!item.chatterMessage.Id}" assignTo="{!deleteId}" />
+                                </apex:commandLink>
+                            </td>
+                            <td class="sentDateCol">
+                                <apex:outputText value="{!item.sentDate}" />
+                            </td>
+                            <td class="smallPhotoUrlCol">
+                                <apex:image value="{!item.user.SmallPhotoUrl}" width="30px" />
+                            </td>
+                            <td class="lastNameCol">
+                                <apex:outputLink value="/_ui/core/userprofile/UserProfilePage?u={!item.user.Id}" target="_blank">
+                                    <apex:outputText value="{!item.user.LastName}" />
+                                </apex:outputLink>
+                            </td>
+                            <td>
+                                <apex:outputText value="{!item.chatterMessage.body}" />
+                            </td>
+                        </tr>
+                    </apex:repeat>
+                </table>
+            </apex:outputPanel>
+            <apex:outputPanel rendered="{!errorMessage != ''}">
+                <apex:outputText value="{!errorMessage}" styleClass="errorMessage" />
+            </apex:outputPanel>
+        </apex:form>
+    </div>
+</apex:page>

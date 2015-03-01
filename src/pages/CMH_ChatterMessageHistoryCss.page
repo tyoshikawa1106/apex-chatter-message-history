@@ -1,0 +1,32 @@
+<apex:page >
+    <style>
+        #vf-page {
+            padding: 5px;
+            font-size: 12px;
+        }
+        #vf-page .histryTable {
+            width: 100%;
+        }
+        #vf-page .histryTable td {
+            padding: 5px;
+            border-bottom: 1px solid #D8D8D8;
+        }
+        #vf-page .deleteLinkCol {
+            text-align: center;
+            width: 40px;
+        }
+        #vf-page .sentDateCol {
+            width: 140px;
+        }
+        #vf-page .smallPhotoUrlCol {
+            width: 35px;
+        }
+        #vf-page .lastNameCol {
+            width: 200px;
+        }
+        #vf-page .errorMessage {
+            color: #FF0000;
+            font-weight: bold;
+        }
+    </style>
+</apex:page>
